@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Singitham — Trusted Master Data On Us</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#0D1117;
+    --panel:#141A22;
+    --panel-2:#1B222C;
+    --line:#28313D;
+    --text:#E7EAEE;
+    --muted:#8B96A5;
+    --amber:#F2A93B;
+    --amber-dim:#5A431E;
+    --blue:#5B8DEF;
+    --teal:#4FD1C5;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--ink);
+    color:var(--text);
+    font-family:'IBM Plex Sans', sans-serif;
+    line-height:1.6;
+    overflow-x:hidden;
+  }
+  h1,h2,h3{
+    font-family:'Space Grotesk', sans-serif;
+    font-weight:600;
+    letter-spacing:-0.01em;
+  }
+  .mono{
+    font-family:'IBM Plex Mono', monospace;
+  }
+  a{color:inherit;text-decoration:none;}
+  .wrap{
+    max-width:1180px;
+    margin:0 auto;
+    padding:0 32px;
+  }
+
+  /* ---------- NAV ---------- */
+  nav{
+    position:sticky; top:0; z-index:50;
+    background:rgba(13,17,23,0.85);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  nav .wrap{
+    display:flex; align-items:center; justify-content:space-between;
+    height:72px;
+  }
+  .logo{
+    display:flex; align-items:center; gap:10px;
+    font-family:'Space Grotesk'; font-weight:700; font-size:20px;
+  }
+  .logo .dot{
+    width:10px;height:10px;border-radius:50%;
+    background:var(--amber);
+    box-shadow:0 0 12px var(--amber);
+  }
+  .navlinks{display:flex; gap:36px; font-size:14px; color:var(--muted);}
+  .navlinks a:hover{color:var(--text);}
+  .cta-btn{
+    background:var(--amber);
+    color:#1A1305;
+    padding:10px 20px;
+    border-radius:4px;
+    font-weight:600;
+    font-size:14px;
+    display:inline-block;
+  }
+  .cta-btn:hover{filter:brightness(1.08);}
+  .cta-ghost{
+    border:1px solid var(--line);
+    padding:10px 20px;
+    border-radius:4px;
+    font-size:14px;
+    color:var(--text);
+  }
+  .cta-ghost:hover{border-color:var(--amber); color:var(--amber);}
+
+  /* ---------- HERO ---------- */
+  header.hero{
+    position:relative;
+    padding:100px 0 60px;
+    background:
+      radial-gradient(ellipse 900px 500px at 80% -10%, rgba(91,141,239,0.14), transparent 60%),
+      radial-gradient(ellipse 700px 400px at 10% 10%, rgba(242,169,59,0.10), transparent 60%);
+    border-bottom:1px solid var(--line);
+  }
+  .eyebrow{
+    display:inline-flex; align-items:center; gap:8px;
+    font-family:'IBM Plex Mono'; font-size:12px; letter-spacing:0.08em;
+    color:var(--amber);
+    border:1px solid var(--amber-dim);
+    background:rgba(242,169,59,0.06);
+    padding:6px 12px;
+    border-radius:100px;
+    margin-bottom:24px;
+    text-transform:uppercase;
+  }
+  .hero h1{
+    font-size:56px;
+    line-height:1.08;
+    max-width:760px;
+    margin-bottom:22px;
+  }
+  .hero h1 em{
+    font-style:normal;
+    color:var(--amber);
+  }
+  .hero p.lead{
+    font-size:19px;
+    color:var(--muted);
+    max-width:620px;
+    margin-bottom:36px;
+  }
+  .hero-ctas{display:flex; gap:14px; margin-bottom:70px;}
+
+  /* ---------- PIPELINE SIGNATURE DIAGRAM ---------- */
+  .pipeline{
+    background:var(--panel);
+    border:1px solid var(--line);
+    border-radius:10px;
+    padding:34px 28px 22px;
+    overflow-x:auto;
+  }
+  .pipeline-label{
+    font-family:'IBM Plex Mono'; font-size:11px; color:var(--muted);
+    text-transform:uppercase; letter-spacing:0.1em; margin-bottom:18px;
+  }
+  svg.flow{width:100%; height:auto; min-width:760px; display:block;}
+  .node-title{fill:var(--text); font-family:'Space Grotesk',sans-serif; font-size:14px; font-weight:600;}
+  .node-sub{fill:var(--muted); font-family:'IBM Plex Mono',monospace; font-size:10px;}
+  .flow-path{
+    fill:none; stroke:var(--line); stroke-width:2;
+  }
+  .flow-dot{
+    fill:var(--amber);
+    filter:drop-shadow(0 0 4px rgba(242,169,59,0.9));
+  }
+
+  /* ---------- SECTION generic ---------- */
+  section{padding:88px 0;}
+  .section-head{
+    max-width:640px;
+    margin-bottom:50px;
+  }
+  .kicker{
+    font-family:'IBM Plex Mono'; font-size:12px; color:var(--blue);
+    letter-spacing:0.08em; text-transform:uppercase; margin-bottom:14px; display:block;
+  }
+  .section-head h2{font-size:34px; margin-bottom:16px;}
+  .section-head p{color:var(--muted); font-size:16px;}
+
+  /* ---------- INTRO / ABOUT ---------- */
+  .about{
+    border-bottom:1px solid var(--line);
+  }
+  .about-grid{
+    display:grid;
+    grid-template-columns:1.1fr 0.9fr;
+    gap:56px;
+    align-items:start;
+  }
+  .about-text p{
+    color:#C6CDD6;
+    font-size:16px;
+    margin-bottom:20px;
+  }
+  .about-text p:first-of-type{
+    font-size:19px;
+    color:var(--text);
+  }
+  .about-text strong{color:var(--amber); font-weight:600;}
+  .about-img{
+    border-radius:10px;
+    overflow:hidden;
+    border:1px solid var(--line);
+    position:relative;
+    aspect-ratio:4/5;
+  }
+  .about-img img{
+    width:100%; height:100%; object-fit:cover;
+    filter:grayscale(0.5) contrast(1.05) sepia(0.15) saturate(1.2);
+    mix-blend-mode:luminosity;
+    opacity:0.85;
+  }
+  .about-img::after{
+    content:"";
+    position:absolute; inset:0;
+    background:linear-gradient(180deg, rgba(13,17,23,0) 40%, rgba(13,17,23,0.85) 100%);
+  }
+  .about-img .cap{
+    position:absolute; left:16px; bottom:14px; z-index:2;
+    font-family:'IBM Plex Mono'; font-size:11px; color:var(--muted);
+  }
+
+  /* ---------- AGENTS ---------- */
+  .agents{background:var(--panel); border-bottom:1px solid var(--line);}
+  .agent-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:1px;
+    background:var(--line);
+    border:1px solid var(--line);
+    border-radius:10px;
+    overflow:hidden;
+  }
+  .agent-card{
+    background:var(--ink);
+    padding:30px 24px 34px;
+    position:relative;
+  }
+  .agent-num{
+    font-family:'IBM Plex Mono'; font-size:12px; color:var(--muted); margin-bottom:22px; display:block;
+  }
+  .agent-icon{
+    width:40px; height:40px; margin-bottom:20px;
+  }
+  .agent-card h3{font-size:18px; margin-bottom:10px;}
+  .agent-card p{font-size:14px; color:var(--muted);}
+  .agent-tag{
+    display:inline-block; margin-top:16px;
+    font-family:'IBM Plex Mono'; font-size:10px;
+    color:var(--teal); border:1px solid rgba(79,209,197,0.3);
+    padding:3px 8px; border-radius:100px; text-transform:uppercase; letter-spacing:0.05em;
+  }
+
+  /* ---------- WHY / STRIP ---------- */
+  .why{
+    display:grid; grid-template-columns:repeat(3,1fr); gap:28px;
+  }
+  .why-card{
+    border:1px solid var(--line);
+    border-radius:10px;
+    overflow:hidden;
+    background:var(--panel);
+  }
+  .why-card .imgwrap{aspect-ratio:16/10; overflow:hidden;}
+  .why-card img{width:100%; height:100%; object-fit:cover; filter:grayscale(0.35) brightness(0.85);}
+  .why-card .body{padding:22px 22px 26px;}
+  .why-card h3{font-size:17px; margin-bottom:8px;}
+  .why-card p{font-size:14px; color:var(--muted);}
+
+  /* ---------- STATS ---------- */
+  .stats{
+    border-top:1px solid var(--line);
+    border-bottom:1px solid var(--line);
+    background:var(--panel);
+  }
+  .stats-grid{
+    display:grid; grid-template-columns:repeat(4,1fr);
+    padding:56px 0;
+  }
+  .stat{text-align:left; padding:0 20px; border-left:1px solid var(--line);}
+  .stat:first-child{border-left:none;}
+  .stat .num{font-family:'Space Grotesk'; font-size:38px; color:var(--amber); font-weight:700;}
+  .stat .label{font-size:13px; color:var(--muted); margin-top:6px;}
+
+  /* ---------- CTA / FOOTER ---------- */
+  .cta-band{
+    text-align:center;
+    padding:100px 0;
+    background:
+      radial-gradient(ellipse 800px 400px at 50% 0%, rgba(242,169,59,0.10), transparent 65%);
+  }
+  .cta-band h2{font-size:38px; max-width:600px; margin:0 auto 18px;}
+  .cta-band p{color:var(--muted); margin-bottom:34px;}
+  .cta-band .btns{display:flex; gap:14px; justify-content:center;}
+
+  footer{
+    border-top:1px solid var(--line);
+    padding:40px 0;
+  }
+  footer .wrap{display:flex; justify-content:space-between; align-items:center; font-size:13px; color:var(--muted);}
+
+  @media(max-width:900px){
+    .hero h1{font-size:38px;}
+    .about-grid{grid-template-columns:1fr;}
+    .agent-grid{grid-template-columns:1fr 1fr;}
+    .why{grid-template-columns:1fr;}
+    .stats-grid{grid-template-columns:1fr 1fr; row-gap:30px;}
+    .stat{border-left:none; border-top:1px solid var(--line); padding-top:20px;}
+    .stat:first-child{border-top:none;}
+    .navlinks{display:none;}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <div>
+      <div class="logo"><span class="dot"></span>Singitham</div>
+      <div class="mono" style="font-size:10px;color:var(--muted);letter-spacing:0.06em;margin-top:1px;">TRUSTED MASTER DATA ON US</div>
+    </div>
+    <div class="navlinks">
+      <a href="#about">What we do</a>
+      <a href="#agents">Agents</a>
+      <a href="about.html">About</a>
+    </div>
+    <a href="#contact" class="cta-btn">Book a walkthrough</a>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <span class="eyebrow mono">● Agentic AI · Master Data Management</span>
+    <div class="mono" style="color:var(--amber);font-size:14px;letter-spacing:0.04em;margin-bottom:14px;">Trusted master data on us.</div>
+    <h1>Clean, trusted master data —<br>run by <em>agents</em>, not headcount.</h1>
+    <p class="lead">Singitham gives small and mid-sized enterprises an agentic AI layer for master data management: the accuracy of a full MDM program, without the year-long implementation or the army of consultants.</p>
+    <div class="hero-ctas">
+      <a href="#contact" class="cta-btn">Book a walkthrough</a>
+      <a href="#agents" class="cta-ghost">See the agents →</a>
+    </div>
+
+    <div class="pipeline">
+      <div class="pipeline-label">The Singitham pipeline · raw records → golden record</div>
+      <svg class="flow" viewBox="0 0 1080 190" xmlns="http://www.w3.org/2000/svg">
+        <!-- connecting paths -->
+        <path class="flow-path" d="M 90 95 H 250"/>
+        <path class="flow-path" d="M 380 95 H 540"/>
+        <path class="flow-path" d="M 670 95 H 830"/>
+        <path class="flow-path" d="M 960 95 H 1040"/>
+
+        <!-- animated dots -->
+        <circle class="flow-dot" r="4">
+          <animateMotion dur="2.6s" repeatCount="indefinite" path="M 90 95 H 1040"/>
+        </circle>
+        <circle class="flow-dot" r="4" opacity="0.6">
+          <animateMotion dur="2.6s" begin="0.9s" repeatCount="indefinite" path="M 90 95 H 1040"/>
+        </circle>
+        <circle class="flow-dot" r="4" opacity="0.35">
+          <animateMotion dur="2.6s" begin="1.8s" repeatCount="indefinite" path="M 90 95 H 1040"/>
+        </circle>
+
+        <!-- source -->
+        <circle cx="55" cy="95" r="30" fill="#1B222C" stroke="#28313D" stroke-width="1.5"/>
+        <text x="55" y="99" text-anchor="middle" class="mono" font-size="9" fill="#8B96A5">CRM/ERP</text>
+        <text x="55" y="150" text-anchor="middle" class="node-sub">raw sources</text>
+
+        <!-- node 1 -->
+        <rect x="250" y="60" width="130" height="70" rx="8" fill="#141A22" stroke="#F2A93B" stroke-width="1.5"/>
+        <text x="315" y="88" text-anchor="middle" class="node-title">Sourcing</text>
+        <text x="315" y="106" text-anchor="middle" class="node-sub">01 · ingest &amp; connect</text>
+
+        <!-- node 2 -->
+        <rect x="540" y="60" width="130" height="70" rx="8" fill="#141A22" stroke="#4FD1C5" stroke-width="1.5"/>
+        <text x="605" y="88" text-anchor="middle" class="node-title">Data Quality</text>
+        <text x="605" y="106" text-anchor="middle" class="node-sub">02 · cleanse &amp; validate</text>
+
+        <!-- node 3 -->
+        <rect x="830" y="60" width="130" height="70" rx="8" fill="#141A22" stroke="#5B8DEF" stroke-width="1.5"/>
+        <text x="895" y="88" text-anchor="middle" class="node-title">MDM Agent</text>
+        <text x="895" y="106" text-anchor="middle" class="node-sub">03 · match &amp; merge</text>
+
+        <!-- provisioning end -->
+        <circle cx="1055" cy="95" r="30" fill="#1B222C" stroke="#F2A93B" stroke-width="1.5"/>
+        <text x="1055" y="99" text-anchor="middle" class="mono" font-size="8.5" fill="#F2A93B">GOLDEN</text>
+        <text x="1055" y="150" text-anchor="middle" class="node-sub">04 · provisioning agent</text>
+      </svg>
+    </div>
+  </div>
+</header>
+
+<section class="about" id="about">
+  <div class="wrap about-grid">
+    <div class="about-text">
+      <span class="kicker">What we do</span>
+      <p>We provide an <strong>agentic AI solution purpose-built for small to mid-sized MDM implementations</strong> — the kind of program that used to require a six-figure consulting engagement and a year on the calendar. Singitham compresses that into a coordinated team of AI agents that source, clean, match, and publish your master data continuously, not once a quarter.</p>
+      <p>Instead of one monolithic tool, Singitham is organized as four specialized agents that hand work off to each other the way a well-run data team would: a <strong>sourcing agent</strong> that connects to your CRMs, ERPs, spreadsheets, and third-party feeds; a <strong>data quality agent</strong> that standardizes formats, fills gaps, and flags anomalies before they spread; an <strong>MDM agent</strong> that performs match-and-merge across systems to resolve duplicate customers, products, and vendors into a single trusted record; and a <strong>provisioning agent</strong> that pushes the golden record back out to every downstream system that depends on it.</p>
+      <p>Because the agents reason over your data rather than follow rigid rule sheets, Singitham adapts as your source systems change — new fields, new formats, new acquisitions — without months of re-mapping. It's MDM sized and priced for teams that don't have a dedicated data governance department, but still need data they can trust.</p>
+    </div>
+    <div class="about-img">
+      <img src="https://picsum.photos/seed/fabrikdata/800/1000" alt="Data infrastructure">
+      <div class="cap mono">// master data, unified</div>
+    </div>
+  </div>
+</section>
+
+<section class="agents" id="agents">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="kicker">The agent stack</span>
+      <h2>Four agents. One golden record.</h2>
+      <p>Each agent owns one stage of the pipeline and hands off cleanly to the next — so the whole system stays inspectable, not a black box.</p>
+    </div>
+    <div class="agent-grid">
+      <div class="agent-card">
+        <span class="agent-num mono">01</span>
+        <svg class="agent-icon" viewBox="0 0 40 40" fill="none"><rect x="4" y="4" width="14" height="14" rx="3" stroke="#F2A93B" stroke-width="1.6"/><rect x="22" y="4" width="14" height="14" rx="3" stroke="#F2A93B" stroke-width="1.6" opacity="0.5"/><rect x="4" y="22" width="14" height="14" rx="3" stroke="#F2A93B" stroke-width="1.6" opacity="0.5"/><path d="M18 11h4M11 18v4" stroke="#F2A93B" stroke-width="1.6"/></svg>
+        <h3>Sourcing Agent</h3>
+        <p>Connects to CRMs, ERPs, spreadsheets and flat files, auto-discovers schemas, and keeps ingestion in sync as source systems change.</p>
+        <span class="agent-tag">Ingest</span>
+      </div>
+      <div class="agent-card">
+        <span class="agent-num mono">02</span>
+        <svg class="agent-icon" viewBox="0 0 40 40" fill="none"><path d="M20 5l13 7v11l-13 7-13-7V12l13-7z" stroke="#4FD1C5" stroke-width="1.6"/><path d="M14 19l4 4 8-8" stroke="#4FD1C5" stroke-width="1.6"/></svg>
+        <h3>Data Quality Agent</h3>
+        <p>Standardizes formats, resolves missing or malformed values, and flags outliers before they contaminate downstream systems.</p>
+        <span class="agent-tag">Cleanse</span>
+      </div>
+      <div class="agent-card">
+        <span class="agent-num mono">03</span>
+        <svg class="agent-icon" viewBox="0 0 40 40" fill="none"><circle cx="13" cy="14" r="6" stroke="#5B8DEF" stroke-width="1.6"/><circle cx="27" cy="14" r="6" stroke="#5B8DEF" stroke-width="1.6" opacity="0.5"/><path d="M20 25c-6 0-11 3-11 7h22c0-4-5-7-11-7z" stroke="#5B8DEF" stroke-width="1.6"/></svg>
+        <h3>MDM Agent</h3>
+        <p>Matches records across systems and merges duplicates into a single trusted golden record for customers, products, and vendors.</p>
+        <span class="agent-tag">Match &amp; merge</span>
+      </div>
+      <div class="agent-card">
+        <span class="agent-num mono">04</span>
+        <svg class="agent-icon" viewBox="0 0 40 40" fill="none"><rect x="6" y="16" width="10" height="18" rx="2" stroke="#F2A93B" stroke-width="1.6"/><rect x="24" y="8" width="10" height="26" rx="2" stroke="#F2A93B" stroke-width="1.6" opacity="0.6"/><path d="M4 6l6 6M34 6l-6 6" stroke="#F2A93B" stroke-width="1.6"/></svg>
+        <h3>Provisioning Agent</h3>
+        <p>Publishes the golden record back to every downstream system on the schedule and format each one needs — no manual exports.</p>
+        <span class="agent-tag">Distribute</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="stats">
+  <div class="wrap stats-grid">
+    <div class="stat"><div class="num mono">4</div><div class="label">specialized agents, one pipeline</div></div>
+    <div class="stat"><div class="num mono">6-8 wks</div><div class="label">typical time to first golden record</div></div>
+    <div class="stat"><div class="num mono">10x</div><div class="label">lower cost than traditional MDM programs</div></div>
+    <div class="stat"><div class="num mono">24/7</div><div class="label">continuous match &amp; merge, not batch-quarterly</div></div>
+  </div>
+</section>
+
+<section id="why">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="kicker">Why agentic, why now</span>
+      <h2>Built for teams without a data governance department</h2>
+      <p>Traditional MDM suites were designed for enterprises with dedicated stewards. Singitham's agents take on that stewardship work directly.</p>
+    </div>
+    <div class="why">
+      <div class="why-card">
+        <div class="imgwrap"><img src="https://picsum.photos/seed/fabrikserver/600/380" alt="Server infrastructure"></div>
+        <div class="body">
+          <h3>No rip-and-replace</h3>
+          <p>Singitham layers on top of the systems you already run — CRM, ERP, e-commerce — instead of asking you to migrate to a new platform.</p>
+        </div>
+      </div>
+      <div class="why-card">
+        <div class="imgwrap"><img src="https://picsum.photos/seed/fabrikteam/600/380" alt="Team collaboration"></div>
+        <div class="body">
+          <h3>Weeks, not years</h3>
+          <p>Because agents configure themselves against your schemas, most implementations reach a first golden record inside two months.</p>
+        </div>
+      </div>
+      <div class="why-card">
+        <div class="imgwrap"><img src="https://picsum.photos/seed/fabrikcode/600/380" alt="Data pipeline code"></div>
+        <div class="body">
+          <h3>Transparent by design</h3>
+          <p>Every match, merge, and correction is logged and explainable — so your team can audit exactly why two records became one.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-band" id="contact">
+  <div class="wrap">
+    <h2>See your own data move through the pipeline.</h2>
+    <p>Bring a sample export — we'll show you what the sourcing, quality, and MDM agents find in it.</p>
+    <div class="btns">
+      <a href="#" class="cta-btn">Book a walkthrough</a>
+      <a href="#" class="cta-ghost">Talk to sales</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="logo" style="font-size:15px;"><span class="dot" style="width:7px;height:7px;"></span>Singitham</div>
+    <div>Trusted master data on us.</div>
+  </div>
+</footer>
+
+</body>
+</html>
