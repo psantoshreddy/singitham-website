@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>About — Singitham</title>
+<title>Book a Walkthrough — Singitham</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
@@ -291,68 +291,78 @@
     .navlinks{display:none;}
   }
 
-  /* ---------- FOUNDER PAGE ---------- */
-  .founder-section{border-bottom:1px solid var(--line);}
-  .founder-grid{
+  /* ---------- BOOKING PAGE ---------- */
+  .book-section{border-bottom:1px solid var(--line);}
+  .book-grid{
     display:grid;
-    grid-template-columns:0.85fr 1.15fr;
+    grid-template-columns:1fr 0.85fr;
     gap:56px;
     align-items:start;
   }
-  .founder-card{
+  .book-form{
     border:1px solid var(--line);
     border-radius:10px;
     background:var(--panel);
-    padding:36px 28px;
-    text-align:center;
+    padding:32px;
   }
-  .avatar{
-    width:120px; height:120px;
-    margin:0 auto 22px;
-    border-radius:50%;
-    background:linear-gradient(160deg, var(--amber), #C97A1E);
-    display:flex; align-items:center; justify-content:center;
-    font-family:'Space Grotesk'; font-weight:700; font-size:38px;
+  .field{margin-bottom:20px;}
+  .field label{
+    display:block; font-family:'IBM Plex Mono'; font-size:11px; color:var(--muted);
+    text-transform:uppercase; letter-spacing:0.06em; margin-bottom:8px;
+  }
+  .field input, .field select, .field textarea{
+    width:100%;
+    background:var(--ink);
+    border:1px solid var(--line);
+    border-radius:6px;
+    padding:12px 14px;
+    color:var(--text);
+    font-family:'IBM Plex Sans', sans-serif;
+    font-size:14px;
+    outline:none;
+  }
+  .field input:focus, .field select:focus, .field textarea:focus{
+    border-color:var(--amber);
+  }
+  .field textarea{resize:vertical; min-height:90px;}
+  .field-row{display:grid; grid-template-columns:1fr 1fr; gap:16px;}
+  .submit-btn{
+    width:100%;
+    background:var(--amber);
     color:#1A1305;
+    border:none;
+    padding:14px;
+    border-radius:6px;
+    font-weight:600;
+    font-size:15px;
+    font-family:'Space Grotesk', sans-serif;
+    cursor:pointer;
+    margin-top:6px;
   }
-  .founder-card h3{font-size:22px; margin-bottom:4px;}
-  .founder-card .role{
-    color:var(--amber); font-family:'IBM Plex Mono'; font-size:12px;
-    text-transform:uppercase; letter-spacing:0.06em; margin-bottom:22px; display:block;
-  }
-  .founder-metrics{
-    display:grid; grid-template-columns:1fr 1fr;
-    gap:1px; background:var(--line); border:1px solid var(--line); border-radius:8px;
-    overflow:hidden; margin-top:8px; text-align:left;
-  }
-  .founder-metrics div{background:var(--ink); padding:16px 16px;}
-  .founder-metrics .num{font-family:'Space Grotesk'; font-size:24px; color:var(--amber); font-weight:700;}
-  .founder-metrics .lbl{font-size:11px; color:var(--muted); margin-top:2px; font-family:'IBM Plex Mono';}
+  .submit-btn:hover{filter:brightness(1.08);}
+  .form-note{font-size:12px; color:var(--muted); margin-top:14px; text-align:center;}
 
-  .founder-text p{color:#C6CDD6; font-size:16px; margin-bottom:20px;}
-  .founder-text p:first-of-type{font-size:18px; color:var(--text);}
-  .founder-text strong{color:var(--amber); font-weight:600;}
-
-  .expertise-tags{display:flex; flex-wrap:wrap; gap:10px; margin-top:26px;}
-  .expertise-tags span{
-    font-family:'IBM Plex Mono'; font-size:11px; color:var(--teal);
-    border:1px solid rgba(79,209,197,0.3); padding:6px 12px; border-radius:100px;
-    text-transform:uppercase; letter-spacing:0.04em;
+  .book-info h3{font-size:18px; margin-bottom:14px;}
+  .expect-list{list-style:none; margin-bottom:32px;}
+  .expect-list li{
+    display:flex; gap:12px; align-items:flex-start;
+    font-size:14px; color:#C6CDD6; margin-bottom:16px;
   }
-
-  .timeline{margin-top:8px;}
-  .timeline-item{
-    display:grid; grid-template-columns:110px 1fr; gap:20px;
-    padding:20px 0; border-top:1px solid var(--line);
+  .expect-list li .mark{
+    color:var(--amber); font-family:'IBM Plex Mono'; font-size:12px; flex-shrink:0; margin-top:2px;
   }
-  .timeline-item:last-child{border-bottom:1px solid var(--line);}
-  .timeline-item .yr{font-family:'IBM Plex Mono'; font-size:12px; color:var(--muted);}
-  .timeline-item h4{font-size:15px; margin-bottom:6px;}
-  .timeline-item p{font-size:14px; color:var(--muted);}
+  .direct-contact{
+    border-top:1px solid var(--line);
+    padding-top:24px;
+  }
+  .direct-contact a{
+    display:block; color:var(--amber); font-family:'IBM Plex Mono'; font-size:14px; margin-bottom:6px;
+  }
+  .direct-contact p{color:var(--muted); font-size:13px; margin-top:10px;}
 
   @media(max-width:900px){
-    .founder-grid{grid-template-columns:1fr;}
-    .timeline-item{grid-template-columns:1fr; gap:6px;}
+    .book-grid{grid-template-columns:1fr;}
+    .field-row{grid-template-columns:1fr;}
   }
 </style>
 </head>
@@ -367,101 +377,99 @@
     <div class="navlinks">
       <a href="index.html">Home</a>
       <a href="index.html#agents">Agents</a>
-      <a href="about.html" style="color:var(--amber);">About</a>
+      <a href="about.html">About</a>
     </div>
-    <a href="book.html" class="cta-btn">Book a walkthrough</a>
+    <a href="book.html" class="cta-btn" style="background:var(--amber);">Book a walkthrough</a>
   </div>
 </nav>
 
 <header class="hero" style="padding:80px 0 60px;">
   <div class="wrap">
-    <span class="eyebrow mono">● About Singitham</span>
-    <h1 style="font-size:44px;">Built by someone who has<br>lived inside MDM for <em>20 years</em>.</h1>
-    <p class="lead">Singitham isn't a first attempt at solving master data. It's the product of two decades spent inside MDM programs — the failed ones and the ones that worked.</p>
+    <span class="eyebrow mono">● Book a Walkthrough</span>
+    <h1 style="font-size:44px;">See your own data move<br>through the <em>pipeline</em>.</h1>
+    <p class="lead">30 minutes, no slide deck. Bring a sample export and we'll show you what the sourcing, quality, and MDM agents find in it.</p>
   </div>
 </header>
 
-<section class="founder-section" id="founder">
-  <div class="wrap founder-grid">
-    <div class="founder-card">
-      <div class="avatar">SP</div>
-      <h3>Santosh Papagari</h3>
-      <span class="role">Founder &amp; CEO</span>
-      <div class="founder-metrics">
-        <div><div class="num mono">30</div><div class="lbl">YEARS IN DATA</div></div>
-        <div><div class="num mono">20</div><div class="lbl">YEARS IN MDM</div></div>
-        <div><div class="num mono">Multiple</div><div class="lbl">MDM IMPLEMENTATIONS LED</div></div>
-        <div><div class="num mono">Multi</div><div class="lbl">INDUSTRY EXPERIENCE</div></div>
+<section class="book-section" id="book">
+  <div class="wrap book-grid">
+    <form class="book-form" id="walkthroughForm">
+      <div class="field-row">
+        <div class="field">
+          <label for="name">Full name</label>
+          <input type="text" id="name" name="name" placeholder="Jane Doe" required>
+        </div>
+        <div class="field">
+          <label for="company">Company</label>
+          <input type="text" id="company" name="company" placeholder="Acme Inc." required>
+        </div>
       </div>
-    </div>
+      <div class="field-row">
+        <div class="field">
+          <label for="email">Work email</label>
+          <input type="email" id="email" name="email" placeholder="jane@acme.com" required>
+        </div>
+        <div class="field">
+          <label for="role">Role</label>
+          <input type="text" id="role" name="role" placeholder="Head of Data, IT Director...">
+        </div>
+      </div>
+      <div class="field-row">
+        <div class="field">
+          <label for="systems">Current systems</label>
+          <input type="text" id="systems" name="systems" placeholder="Salesforce, SAP, NetSuite...">
+        </div>
+        <div class="field">
+          <label for="time">Preferred time</label>
+          <select id="time" name="time">
+            <option value="Mornings">Mornings</option>
+            <option value="Afternoons">Afternoons</option>
+            <option value="Flexible">Flexible / any time</option>
+          </select>
+        </div>
+      </div>
+      <div class="field">
+        <label for="message">What's the current state of your master data?</label>
+        <textarea id="message" name="message" placeholder="e.g. duplicate customer records across CRM and ERP, no single source of truth for product data..."></textarea>
+      </div>
+      <button type="submit" class="submit-btn">Request walkthrough</button>
+      <p class="form-note">Submitting opens an email to our team with your details pre-filled — no account or signup needed.</p>
+    </form>
 
-    <div class="founder-text">
-      <span class="kicker">Founder &amp; CEO</span>
-      <p><strong>Santosh Papagari</strong> founded Singitham after spending 20 years focused specifically on master data management, inside a 30-year career across the broader data landscape.</p>
-      <p>Over that time he's led multiple end-to-end MDM implementations — the kind of programs where match-and-merge logic, stewardship workflows, and governance all have to work together, not just in a demo. That work sits inside a wider foundation across <strong>data integration</strong>, <strong>data quality</strong>, <strong>data security</strong>, and <strong>data distribution patterns</strong>, applied across a range of industries with very different data — and very different tolerances for getting it wrong.</p>
-      <p>Singitham exists because of a pattern he kept seeing: the fundamentals of good MDM haven't changed, but the cost and time to implement it never came down — until agentic AI made it possible to automate the parts that used to require a large team of specialists.</p>
-
-      <div class="expertise-tags">
-        <span>Master Data Management</span>
-        <span>Data Integration</span>
-        <span>Data Quality</span>
-        <span>Data Security</span>
-        <span>Data Distribution Patterns</span>
+    <div class="book-info">
+      <h3>What to expect</h3>
+      <ul class="expect-list">
+        <li><span class="mark mono">01</span>We look at a real (or sample) export from your CRM, ERP, or spreadsheets — not a generic demo dataset.</li>
+        <li><span class="mark mono">02</span>You'll see the sourcing, data quality, and MDM agents run against it live, including how duplicates get matched and merged.</li>
+        <li><span class="mark mono">03</span>We'll map out what a first golden record would look like for your specific systems, and a realistic timeline.</li>
+        <li><span class="mark mono">04</span>No pressure, no contract talk — just a working session to see if this is a fit.</li>
+      </ul>
+      <div class="direct-contact">
+        <h3 style="font-size:15px;">Prefer to reach out directly?</h3>
+        <a href="mailto:hello@singitham.com">hello@singitham.com</a>
+        <p>Replace this with your real inbox address before publishing — see note below.</p>
       </div>
     </div>
   </div>
 </section>
 
-<section id="experience">
-  <div class="wrap">
-    <div class="section-head">
-      <span class="kicker">Where that experience comes from</span>
-      <h2>Three decades, four disciplines</h2>
-      <p>Singitham's agents are shaped by the same disciplines Santosh has practiced hands-on across industries.</p>
-    </div>
-    <div class="timeline">
-      <div class="timeline-item">
-        <div class="yr mono">~30 yrs</div>
-        <div>
-          <h4>Data integration</h4>
-          <p>Connecting and moving data reliably across systems — the foundation every MDM program depends on.</p>
-        </div>
-      </div>
-      <div class="timeline-item">
-        <div class="yr mono">~20 yrs</div>
-        <div>
-          <h4>Master data management</h4>
-          <p>Leading multiple MDM implementations end to end, from sourcing and matching through governance and stewardship.</p>
-        </div>
-      </div>
-      <div class="timeline-item">
-        <div class="yr mono">Cross-cutting</div>
-        <div>
-          <h4>Data quality &amp; data security</h4>
-          <p>Building the validation, cleansing, and access-control layers that keep a golden record trustworthy and safe.</p>
-        </div>
-      </div>
-      <div class="timeline-item">
-        <div class="yr mono">Cross-industry</div>
-        <div>
-          <h4>Data distribution patterns</h4>
-          <p>Designing how clean master data gets provisioned back out to every downstream system that depends on it — across multiple industries.</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="cta-band" id="contact">
-  <div class="wrap">
-    <h2>Talk to the person who's built this before.</h2>
-    <p>Bring your MDM problem — Santosh has probably seen a version of it already.</p>
-    <div class="btns">
-      <a href="book.html" class="cta-btn">Book a walkthrough</a>
-      <a href="index.html" class="cta-ghost">Back to home</a>
-    </div>
-  </div>
-</section>
+<script>
+  document.getElementById('walkthroughForm').addEventListener('submit', function(e){
+    e.preventDefault();
+    const f = new FormData(this);
+    const subject = encodeURIComponent('Walkthrough request — ' + (f.get('company') || 'Singitham'));
+    const body = encodeURIComponent(
+      'Name: ' + f.get('name') + '\n' +
+      'Company: ' + f.get('company') + '\n' +
+      'Email: ' + f.get('email') + '\n' +
+      'Role: ' + (f.get('role') || '-') + '\n' +
+      'Current systems: ' + (f.get('systems') || '-') + '\n' +
+      'Preferred time: ' + f.get('time') + '\n\n' +
+      'Notes:\n' + (f.get('message') || '-')
+    );
+    window.location.href = 'mailto:hello@singitham.com?subject=' + subject + '&body=' + body;
+  });
+</script>
 
 <footer>
   <div class="wrap">
