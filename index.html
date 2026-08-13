@@ -248,6 +248,28 @@
   .why-card h3{font-size:17px; margin-bottom:8px;}
   .why-card p{font-size:14px; color:var(--muted);}
 
+  /* ---------- USE CASES ---------- */
+  .use-cases{background:var(--panel); border-top:1px solid var(--line); border-bottom:1px solid var(--line);}
+  .use-case-grid{
+    display:grid; grid-template-columns:repeat(2, minmax(0, 1fr)); gap:24px;
+  }
+  .use-case-card{
+    background:var(--ink); border:1px solid var(--line); border-radius:12px; padding:28px;
+  }
+  .use-case-card .domain{
+    font-family:'IBM Plex Mono'; font-size:11px; color:var(--amber); text-transform:uppercase; letter-spacing:0.08em;
+    margin-bottom:18px; display:block;
+  }
+  .use-case-card h3{font-size:24px; margin-bottom:10px;}
+  .use-case-card p{color:var(--muted); font-size:15px; margin-bottom:18px;}
+  .use-case-card ul{list-style:none; display:grid; gap:10px;}
+  .use-case-card li{
+    display:flex; align-items:flex-start; gap:10px; color:#C7CDD6; font-size:14px;
+  }
+  .use-case-card li::before{
+    content:'▹'; color:var(--teal); font-weight:700; margin-top:1px;
+  }
+
   /* ---------- STATS ---------- */
   .stats{
     border-top:1px solid var(--line);
@@ -302,6 +324,7 @@
     </div>
     <div class="navlinks">
       <a href="#about">What we do</a>
+      <a href="use-cases.html">Use Cases</a>
       <a href="#agents">Agents</a>
       <a href="about.html">About</a>
     </div>
@@ -419,6 +442,58 @@
         <h3>Provisioning Agent</h3>
         <p>Publishes the golden record back to every downstream system on the schedule and format each one needs — no manual exports.</p>
         <span class="agent-tag">Distribute</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="use-cases" id="use-cases">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="kicker">Use cases</span>
+      <h2>MDM where trusted records drive revenue and compliance.</h2>
+      <p>Across regulated and operationally complex industries, the hidden cost is usually the same: duplicate records, inconsistent hierarchies, and slow downstream decisions.</p>
+    </div>
+    <div class="use-case-grid">
+      <div class="use-case-card">
+        <span class="domain">Finance</span>
+        <h3>Customer, vendor, and account master data</h3>
+        <p>Finance teams need a single view of counterparties and accounts to reduce risk, accelerate onboarding, and keep reporting accurate.</p>
+        <ul>
+          <li>Unify customer and vendor records across CRM, ERP, and banking systems</li>
+          <li>Resolve duplicate legal entities for KYC, AML, and regulatory reporting</li>
+          <li>Standardize account hierarchies for cash, risk, and treasury workflows</li>
+        </ul>
+      </div>
+      <div class="use-case-card">
+        <span class="domain">Automobile</span>
+        <h3>Vehicle, dealer, and parts master data</h3>
+        <p>Automotive businesses often have fragmented dealer, supplier, and product records that slow warranty, service, and channel operations.</p>
+        <ul>
+          <li>Match vehicle and VIN data across OEM, dealer, and service platforms</li>
+          <li>Clean supplier and parts master data for procurement and service fulfillment</li>
+          <li>Align dealer hierarchies to improve coverage, lead routing, and warranty claims</li>
+        </ul>
+      </div>
+      <div class="use-case-card">
+        <span class="domain">Retail</span>
+        <h3>Product, customer, and store master data</h3>
+        <p>Retailers depend on clean product and customer records to keep pricing, assortment, and promotions aligned across channels.</p>
+        <ul>
+          <li>Unify product records across PLM, ERP, e-commerce, and POS systems</li>
+          <li>Resolve duplicate customer identities across stores, digital channels, and loyalty programs</li>
+          <li>Connect store and supplier hierarchies for inventory, replenishment, and reporting</li>
+        </ul>
+      </div>
+      <div class="use-case-card">
+        <span class="domain">Healthcare</span>
+        <h3>Patient, provider, and payer master data</h3>
+        <p>Healthcare organizations need trusted identities across care, claims, and revenue operations to improve patient experience and reduce admin friction.</p>
+        <ul>
+          <li>Match patient records across EMR, scheduling, billing, and payer systems</li>
+          <li>Standardize provider and location data for credentialing and referral workflows</li>
+          <li>Improves claims accuracy, reimbursement, and care coordination across networks</li>
+        </ul>
       </div>
     </div>
   </div>

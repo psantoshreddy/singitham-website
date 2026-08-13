@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Use Cases — Singitham</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#0D1117;
+    --panel:#141A22;
+    --panel-2:#1B222C;
+    --line:#28313D;
+    --text:#E7EAEE;
+    --muted:#8B96A5;
+    --amber:#F2A93B;
+    --amber-dim:#5A431E;
+    --blue:#5B8DEF;
+    --teal:#4FD1C5;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--ink);
+    color:var(--text);
+    font-family:'IBM Plex Sans', sans-serif;
+    line-height:1.6;
+    overflow-x:hidden;
+  }
+  h1,h2,h3{font-family:'Space Grotesk', sans-serif; font-weight:600; letter-spacing:-0.01em;}
+  .mono{font-family:'IBM Plex Mono', monospace;}
+  a{color:inherit;text-decoration:none;}
+  .wrap{max-width:1180px; margin:0 auto; padding:0 32px;}
+
+  nav{
+    position:sticky; top:0; z-index:50;
+    background:rgba(13,17,23,0.85);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  nav .wrap{display:flex; align-items:center; justify-content:space-between; height:72px;}
+  .logo{display:flex; align-items:center; gap:10px; font-family:'Space Grotesk'; font-weight:700; font-size:20px;}
+  .logo .dot{width:10px;height:10px;border-radius:50%; background:var(--amber); box-shadow:0 0 12px var(--amber);}
+  .navlinks{display:flex; gap:36px; font-size:14px; color:var(--muted);}
+  .navlinks a:hover{color:var(--text);} 
+  .cta-btn{background:var(--amber); color:#1A1305; padding:10px 20px; border-radius:4px; font-weight:600; font-size:14px; display:inline-block;}
+  .cta-btn:hover{filter:brightness(1.08);}
+  .cta-ghost{border:1px solid var(--line); padding:10px 20px; border-radius:4px; font-size:14px; color:var(--text);}
+  .cta-ghost:hover{border-color:var(--amber); color:var(--amber);}
+
+  header.hero{
+    position:relative;
+    padding:100px 0 60px;
+    background:
+      radial-gradient(ellipse 900px 500px at 80% -10%, rgba(91,141,239,0.14), transparent 60%),
+      radial-gradient(ellipse 700px 400px at 10% 10%, rgba(242,169,59,0.10), transparent 60%);
+    border-bottom:1px solid var(--line);
+  }
+  .eyebrow{
+    display:inline-flex; align-items:center; gap:8px;
+    font-family:'IBM Plex Mono'; font-size:12px; letter-spacing:0.08em;
+    color:var(--amber); border:1px solid var(--amber-dim); background:rgba(242,169,59,0.06);
+    padding:6px 12px; border-radius:100px; margin-bottom:24px; text-transform:uppercase;
+  }
+  .hero h1{font-size:56px; line-height:1.08; max-width:760px; margin-bottom:22px;}
+  .hero h1 em{font-style:normal; color:var(--amber);}
+  .hero p.lead{font-size:19px; color:var(--muted); max-width:720px; margin-bottom:16px;}
+
+  section{padding:88px 0;}
+  .section-head{max-width:700px; margin-bottom:42px;}
+  .kicker{font-family:'IBM Plex Mono'; font-size:12px; color:var(--blue); letter-spacing:0.08em; text-transform:uppercase; margin-bottom:14px; display:block;}
+  .section-head h2{font-size:34px; margin-bottom:16px;}
+  .section-head p{color:var(--muted); font-size:16px;}
+
+  .use-case-grid{display:grid; grid-template-columns:repeat(2, minmax(0, 1fr)); gap:24px;}
+  .use-case-card{background:var(--ink); border:1px solid var(--line); border-radius:12px; padding:28px;}
+  .use-case-card .domain{font-family:'IBM Plex Mono'; font-size:11px; color:var(--amber); text-transform:uppercase; letter-spacing:0.08em; margin-bottom:18px; display:block;}
+  .use-case-card h3{font-size:24px; margin-bottom:10px;}
+  .use-case-card p{color:var(--muted); font-size:15px; margin-bottom:18px;}
+  .use-case-card ul{list-style:none; display:grid; gap:10px;}
+  .use-case-card li{display:flex; align-items:flex-start; gap:10px; color:#C7CDD6; font-size:14px;}
+  .use-case-card li::before{content:'▹'; color:var(--teal); font-weight:700; margin-top:1px;}
+
+  .stats{border-top:1px solid var(--line); border-bottom:1px solid var(--line); background:var(--panel);}
+  .stats-grid{display:grid; grid-template-columns:repeat(4,1fr); padding:56px 0;}
+  .stat{text-align:left; padding:0 20px; border-left:1px solid var(--line);}
+  .stat:first-child{border-left:none;}
+  .stat .num{font-family:'Space Grotesk'; font-size:38px; color:var(--amber); font-weight:700;}
+  .stat .label{font-size:13px; color:var(--muted); margin-top:6px;}
+
+  .cta-band{text-align:center; padding:100px 0; background:radial-gradient(ellipse 800px 400px at 50% 0%, rgba(242,169,59,0.10), transparent 65%);}
+  .cta-band h2{font-size:38px; max-width:650px; margin:0 auto 18px;}
+  .cta-band p{color:var(--muted); margin-bottom:34px;}
+  .cta-band .btns{display:flex; gap:14px; justify-content:center;}
+
+  footer{border-top:1px solid var(--line); padding:40px 0;}
+  footer .wrap{display:flex; justify-content:space-between; align-items:center; font-size:13px; color:var(--muted);}
+
+  @media(max-width:900px){
+    .hero h1{font-size:38px;}
+    .use-case-grid{grid-template-columns:1fr;}
+    .stats-grid{grid-template-columns:1fr 1fr; row-gap:30px;}
+    .stat{border-left:none; border-top:1px solid var(--line); padding-top:20px;}
+    .stat:first-child{border-top:none;}
+    .navlinks{display:none;}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <div>
+      <div class="logo"><span class="dot"></span>Singitham</div>
+      <div class="mono" style="font-size:10px;color:var(--muted);letter-spacing:0.06em;margin-top:1px;">TRUSTED MASTER DATA ON US</div>
+    </div>
+    <div class="navlinks">
+      <a href="index.html">Home</a>
+      <a href="use-cases.html" style="color:var(--amber);">Use Cases</a>
+      <a href="index.html#agents">Agents</a>
+      <a href="about.html">About</a>
+    </div>
+    <a href="book.html" class="cta-btn">Book a walkthrough</a>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <span class="eyebrow mono">● Use Cases</span>
+    <h1>MDM use cases built for the industries that <em>cannot afford bad data</em>.</h1>
+    <p class="lead">Whether the issue is customer duplication, misaligned vendor records, or inconsistent product hierarchies, the business outcome is the same: slower revenue, higher risk, and weaker decisions.</p>
+  </div>
+</header>
+
+<section>
+  <div class="wrap">
+    <div class="section-head">
+      <span class="kicker">Domains</span>
+      <h2>Master data problems, solved where they matter most.</h2>
+      <p>Singitham brings a single trusted record to the systems that power every critical workflow, from onboarding and compliance to pricing, service, and product operations.</p>
+    </div>
+
+    <div class="use-case-grid">
+      <div class="use-case-card">
+        <span class="domain">Finance</span>
+        <h3>Customer, vendor, and account master data</h3>
+        <p>Finance teams need a single view of counterparties and accounts to reduce risk, accelerate onboarding, and keep reporting accurate.</p>
+        <ul>
+          <li>Unify customer and vendor records across CRM, ERP, and banking systems</li>
+          <li>Resolve duplicate legal entities for KYC, AML, and regulatory reporting</li>
+          <li>Standardize account hierarchies for cash, risk, and treasury workflows</li>
+        </ul>
+      </div>
+
+      <div class="use-case-card">
+        <span class="domain">Automobile</span>
+        <h3>Vehicle, dealer, and parts master data</h3>
+        <p>Automotive businesses often have fragmented dealer, supplier, and product records that slow warranty, service, and channel operations.</p>
+        <ul>
+          <li>Match vehicle and VIN data across OEM, dealer, and service platforms</li>
+          <li>Clean supplier and parts master data for procurement and service fulfillment</li>
+          <li>Align dealer hierarchies to improve coverage, lead routing, and warranty claims</li>
+        </ul>
+      </div>
+
+      <div class="use-case-card">
+        <span class="domain">Retail</span>
+        <h3>Product, customer, and store master data</h3>
+        <p>Retailers depend on clean product and customer records to keep pricing, assortment, and promotions aligned across channels.</p>
+        <ul>
+          <li>Unify product records across PLM, ERP, e-commerce, and POS systems</li>
+          <li>Resolve duplicate customer identities across stores, digital channels, and loyalty programs</li>
+          <li>Connect store and supplier hierarchies for inventory, replenishment, and reporting</li>
+        </ul>
+      </div>
+
+      <div class="use-case-card">
+        <span class="domain">Healthcare</span>
+        <h3>Patient, provider, and payer master data</h3>
+        <p>Healthcare organizations need trusted identities across care, claims, and revenue operations to improve patient experience and reduce admin friction.</p>
+        <ul>
+          <li>Match patient records across EMR, scheduling, billing, and payer systems</li>
+          <li>Standardize provider and location data for credentialing and referral workflows</li>
+          <li>Improve claims accuracy, reimbursement, and care coordination across networks</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="stats">
+  <div class="wrap stats-grid">
+    <div class="stat"><div class="num mono">4</div><div class="label">specialized agents, one pipeline</div></div>
+    <div class="stat"><div class="num mono">6-8 wks</div><div class="label">typical time to first golden record</div></div>
+    <div class="stat"><div class="num mono">10x</div><div class="label">lower cost than traditional MDM programs</div></div>
+    <div class="stat"><div class="num mono">24/7</div><div class="label">continuous match &amp; merge, not batch-quarterly</div></div>
+  </div>
+</section>
+
+<section class="cta-band">
+  <div class="wrap">
+    <h2>See your own use case mapped to a trusted master data pipeline.</h2>
+    <p>Bring a sample export and we’ll show you how Singitham would clean, match, and publish your identity data.</p>
+    <div class="btns">
+      <a href="book.html" class="cta-btn">Book a walkthrough</a>
+      <a href="index.html" class="cta-ghost">Back to home</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="logo" style="font-size:15px;"><span class="dot" style="width:7px;height:7px;"></span>Singitham</div>
+    <div>Trusted master data on us.</div>
+  </div>
+</footer>
+
+</body>
+</html>
